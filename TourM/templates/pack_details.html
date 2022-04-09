@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <a href="{% url 'homeView'%}">Back</a>
+    <h1>{{post.title}}</h1>
+    <hr>
+    <br> Description: {{post.body}}
+    <br> Days: <b>{{post.days}}</b>
+    <br><b>Hoster:</b> {{post.creator.first_name}} {{post.creator.last_name}}
+    <br><br><br>
+    <button type="button " onclick="alert( 'Make Payment') ">Enroll</button>
+
+</body>
+
+</html>

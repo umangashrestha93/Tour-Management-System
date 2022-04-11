@@ -1,145 +1,67 @@
 
+let menu = document.querySelector('#menu-btn');
 let navbar = document.querySelector('.header .navbar');
 
-document.querySelector('#menu-btn').onclick = () =>{
-    navbar.classList.add('active');
-}
-
-document.querySelector('#nav-close').onclick = () =>{
-    navbar.classList.remove('active');
-}
-
-let searchForm = document.querySelector('.search-form');
-
-document.querySelector('#search-btn').onclick = () =>{
-    searchForm.classList.add('active');
-}
-
-document.querySelector('#close-search').onclick = () =>{
-    searchForm.classList.remove('active');
-}
-
-// let themeBtn = document.querySelector('theme-btn');
-
-// themeBtn.onclick = () =>{
-//   themeBtn.classList.toogle('fa-sun');
-
-//   if(themeBtn.classList.contains('fa-sun')){
-//     document.body.classList.add('active');
-//   }else{
-//     document.body.classList.remove('active');
-//   }
-// }
-window.onscroll = () =>{
-    navbar.classList.remove('active');
-
-    if(window.scrollY > 0){
-        document.querySelector('.header').classList.add('active');
-    }else{
-        document.querySelector('.header').classList.remove('active');
-    }
+menu.onclick = () =>{
+   menu.classList.toggle('fa-times');
+   navbar.classList.toggle('active');
 };
 
-window.onload = () =>{
-    if(window.scrollY > 0){
-        document.querySelector('.header').classList.add('active');
-    }else{
-        document.querySelector('.header').classList.remove('active');
-    }
+window.onscroll = () =>{
+   menu.classList.remove('fa-times');
+   navbar.classList.remove('active');
+   loginForm.classList.remove('active');
 };
 
 
 var swiper = new Swiper(".home-slider", {
-    loop:true, 
-    grabCursor:true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
+   loop:true,
+   navigation: {
+     nextEl: ".swiper-button-next",
+     prevEl: ".swiper-button-prev",
+   },
 });
 
-var swiper = new Swiper(".product-slider", {
-    loop:true, 
-    grabCursor:true,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-        0: {
-          slidesPerView: 1,
-        },
-        640: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 3,
-        },
-        1024: {
-          slidesPerView: 4,
-        },
-    },
+var swiper = new Swiper(".reviews-slider", {
+   grabCursor:true,
+   loop:true,
+   autoHeight:true,
+   spaceBetween: 20,
+   breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      700: {
+        slidesPerView: 2,
+      },
+      1000: {
+        slidesPerView: 3,
+      },
+   },
 });
 
-var swiper = new Swiper(".review-slider", {
-    loop:true, 
-    grabCursor:true,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-        0: {
-          slidesPerView: 1,
-        },
-        640: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 3,
-        },
-    },
-});
+let loadMoreBtn = document.querySelector('.packages .load-more .btn');
+let currentItem = 3;
 
-var swiper = new Swiper(".blogs-slider", {
-    loop:true, 
-    grabCursor:true,
-    spaceBetween: 10,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-        0: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        991: {
-          slidesPerView: 3,
-        },
-    },
-});
+loadMoreBtn.onclick = () =>{
+   let boxes = [...document.querySelectorAll('.packages .box-container .box')];
+   for (var i = currentItem; i < currentItem + 3; i++){
+      boxes[i].style.display = 'inline-block';
+   };
+   currentItem += 3;
+   if(currentItem >= boxes.length){
+      loadMoreBtn.style.display = 'none';
+   }
+}
 
-var swiper = new Swiper(".clients-slider", {
-    loop:true, 
-    grabCursor:true,
-    spaceBetween: 20,
-    breakpoints: {
-        0: {
-          slidesPerView: 1,
-        },
-        640: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 3,
-        },
-        1024: {
-          slidesPerView: 4,
-        },
-    },
-});
+// let formBtn = document.querySelector('#login-btn');
+// let loginForm = document.querySelector('.login-form-container');
+// let formClose = document.querySelector('#form-close');
+
+// formBtn.addEventListener('click', () =>{
+//    loginForm.classList.add('active');
+// });
+
+// formClose.addEventListener('click', () =>{
+//    loginForm.classList.remove('active');
+// });

@@ -17,12 +17,15 @@
 
     <p>profile: Not Logged in</p>
 
-    <a href="{% url 'login'%}">Login</a> {%endif%}
+    <a href="{% url 'login'%}">Login</a>
+    <a href="{% url 'register'%}">Register</a> {%endif%}
 
     <hr>
     <h1>Packages</h1>
     {% for post in object_list %}
     <hr>
+    <br> {% if post.pack_img%}
+    <img src=" {{post.pack_img.url }}" width="400px"><br> {%endif%}
     <b><a href="{% url 'pack_detailView' post.pk %}">{{post.title}}</a></b>
     <br> Description: {{post.body}}
     <br> Days: <b>{{post.days}}</b>

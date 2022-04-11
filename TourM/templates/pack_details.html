@@ -13,7 +13,9 @@
 <body>
     <p>profile: {{request.user}}</p>
     <a href="{% url 'homeView'%}">Back</a>
-    <h1>{{post.title}}</h1>
+    <br> {% if post.pack_img%}
+    <img src=" {{post.pack_img.url }}" width="400px"><br> {%endif%}
+    <h1>{{post.title}}|id={{post.id}}</h1>
     <hr>
     <br> Description: {{post.body}}
     <br><b>Province:</b> {{post.Provinces}}
@@ -21,7 +23,7 @@
     <br> <b>Price: Rs. {{post.price}}</b>
     <br><b>Hoster:</b> {{post.creator}}
     <br><br><br>
-    <button type="button " onclick="alert( 'Make Payment Rs.{{post.price}}') ">Enroll</button>
+    <a href="{% url 'enrollView' post.pk %}"><button type="button">Enroll</button></a>
 
 </body>
 

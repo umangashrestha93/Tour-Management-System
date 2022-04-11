@@ -68,7 +68,7 @@
         </div>
         <div class="column">
             <h1>Add-Packages</h1>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {%csrf_token%} {{form.as_p}}
                 <button>Add</button>
             </form>

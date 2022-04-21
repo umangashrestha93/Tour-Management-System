@@ -11,14 +11,21 @@
 </head>
 
 <body>
+    <p>profile: {{request.user}}</p>
     <a href="{% url 'homeView'%}">Back</a>
+    <br> {% if post.pack_img%}
+    <img src=" {{post.pack_img.url }}" width="400px"><br> {%endif%}
     <h1>{{post.title}}</h1>
     <hr>
     <br> Description: {{post.body}}
+    <br><b>Province:</b> {{post.Provinces}}
     <br> Days: <b>{{post.days}}</b>
-    <br><b>Hoster:</b> {{post.creator.first_name}} {{post.creator.last_name}}
+    <br> <b>Price: Rs. {{post.price}}</b>
+    <br><b>Hoster:</b> {{post.creator}}
     <br><br><br>
-    <button type="button " onclick="alert( 'Make Payment') ">Enroll</button>
+    <a href="{% url 'enrollView' post.pk %}"><button type="button">Enroll</button></a>
+    <hr> {{comments.comments}}
+
 
 </body>
 
